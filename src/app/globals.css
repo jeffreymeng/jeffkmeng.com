@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.gradient-track::before {
+  pointer-events: none;
+
+  --size: 0;
+  content: "";
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  /*background: radial-gradient(circle closest-side, red, transparent 50%);*/
+  background: radial-gradient(
+    circle closest-side,
+    rgba(22, 78, 99, 0.15),
+    transparent 80%
+  );
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+  z-index: -1;
+}
+
+.gradient-track:hover::before {
+  --size: 800px;
+}
