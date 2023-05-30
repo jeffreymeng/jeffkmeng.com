@@ -22,26 +22,25 @@ export default function Home() {
     };
   }, []);
   return (
-    <main className="relative isolate overflow-hidden bg-slate-900 py-24 sm:py-32 h-screen gradient-track">
+    <main className="relative isolate bg-slate-900 py-24 sm:py-32 h-screen gradient-track">
       <div className="mx-auto max-w-7xl px-6 md:px-16 lg:px-36">
         <div className="max-w-3xl">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            I'm Jeffrey Meng,
+            Jeffrey Meng
           </h2>
           <p className="mt-6 text-lg leading-5 text-white">
-            a software engineer interested in <i>Programming Languages</i>,{" "}
+            I'm a software engineer interested in <i>Programming Languages</i>,{" "}
             <i>Systems</i>, and <i>the Web</i>.
           </p>
-          <p className={"text-red-300"}>
-            TODO: Increase padding for entire page, check mobile responsiveness
-            (disable cursor on mobile), light mode?. Think about typography more
-          </p>
+          {/*  TODO: Increase padding for entire page, check mobile responsiveness
+            (disable cursor on mobile), light mode?. Think about typography more*/}
         </div>
         <div className="mt-16 max-w-3xl">
           <div className="text-base leading-7 text-gray-300">
             <p>
-              I study Computer Science at UC Irvine, and I'm interning at IBM
-              this summer. I also work on programming languages research with{" "}
+              I study Computer Science at UC Irvine, and I'm an intern at IBM
+              for the summer. At UC Irvine, I also research Programming
+              Languages & Static Analysis with{" "}
               <a
                 className={
                   "inline hover:text-cyan-500 transition-all underline"
@@ -50,7 +49,9 @@ export default function Home() {
               >
                 Prof. Michael Franz
               </a>
-              .<span className={"text-red-500"}>TODO: add some more here?</span>
+              . My passion is building applications and systems that increase
+              efficiency and contribute to well-designed experiences.
+              {/*<span className={"text-red-500"}>TODO: add some more here? (I enjoy..., My passion is...)</span>*/}
             </p>
             <p className={"mt-10"}>
               When I'm not behind a computer, you can find me outdoors climbing,

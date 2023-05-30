@@ -15,7 +15,7 @@
   /*background: radial-gradient(circle closest-side, red, transparent 50%);*/
   background: radial-gradient(
     circle closest-side,
-    rgba(22, 78, 99, 0.15),
+    rgba(21, 94, 117, 0.15),
     transparent 80%
   );
   transform: translate(-50%, -50%);
