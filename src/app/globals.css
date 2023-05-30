@@ -4,7 +4,6 @@
 
 .gradient-track::before {
   pointer-events: none;
-
   --size: 0;
   content: "";
   position: absolute;
