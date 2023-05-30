@@ -29,8 +29,8 @@ export default function Home() {
             Jeffrey Meng
           </h2>
           <p className="mt-6 text-lg leading-5 text-white">
-            I'm a software engineer interested in <i>Programming Languages</i>,{" "}
-            <i>Systems</i>, and <i>the Web</i>.
+            I&apos;m a software engineer interested in{" "}
+            <i>Programming Languages</i>, <i>Systems</i>, and <i>the Web</i>.
           </p>
           {/*  TODO: Increase padding for entire page, check mobile responsiveness
             (disable cursor on mobile), light mode?. Think about typography more*/}
@@ -38,8 +38,8 @@ export default function Home() {
         <div className="mt-16 max-w-3xl">
           <div className="text-base leading-7 text-gray-300">
             <p>
-              I study Computer Science at UC Irvine, and I'm an intern at IBM
-              for the summer. At UC Irvine, I also research Programming
+              I study Computer Science at UC Irvine, and I&apos;m an intern at
+              IBM for the summer. At UC Irvine, I also research Programming
               Languages & Static Analysis with{" "}
               <a
                 className={
@@ -54,13 +54,13 @@ export default function Home() {
               {/*<span className={"text-red-500"}>TODO: add some more here? (I enjoy..., My passion is...)</span>*/}
             </p>
             <p className={"mt-10"}>
-              When I'm not behind a computer, you can find me outdoors climbing,
-              skiing, backpacking, and diving (depending on the season), or
-              indoors playing board games.
+              When I&apos;m not behind a computer, you can find me outdoors
+              climbing, skiing, backpacking, and diving (depending on the
+              season), or indoors playing board games.
             </p>
 
             <p className={"mt-10"}>
-              Some things I've worked on include{" "}
+              Some things I&apos;ve worked on include{" "}
               <b>Jump, a Toy Programming Language</b>{" "}
             </p>
             {/*TODO: the bold thing needs to be another element probably, not part of the paragraph*/}
