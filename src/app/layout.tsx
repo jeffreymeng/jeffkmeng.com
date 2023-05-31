@@ -8,14 +8,14 @@ export const metadata = {
 
   title: "Jeffrey Meng",
   description:
-    "I'm Jeffrey Meng, a software engineer interested in Programming Languages, Systems, and the Web. I currently study CS at UC Irvine.",
+    "I'm a software engineer thinking about Programming Languages, Systems, and the Web. I currently study CS at UC Irvine.",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
     title: "Jeffrey Meng",
     description:
-      "I'm a software engineer thinking about Programming Languages, Systems, and the Web. Currently studying CS at UC Irvine.",
+      "I'm a software engineer thinking about Programming Languages, Systems, and the Web. I currently study CS at UC Irvine.",
     url: "https://jeffkmeng.com",
     siteName: "Jeffrey Meng",
     locale: "en_US",
