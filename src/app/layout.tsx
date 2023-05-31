@@ -15,7 +15,7 @@ export const metadata = {
   openGraph: {
     title: "Jeffrey Meng",
     description:
-      "Software engineer interested in Programming Languages, Systems, and the Web. Currently studying CS at UC Irvine.",
+      "I'm a software engineer thinking about Programming Languages, Systems, and the Web. Currently studying CS at UC Irvine.",
     url: "https://jeffkmeng.com",
     siteName: "Jeffrey Meng",
     locale: "en_US",
