@@ -81,7 +81,7 @@ export default function Home() {
               . My passion is building applications and systems that increase
               efficiency and contribute to well-designed experiences.
             </p>
-            <p className={"mt-10"}>
+            <p className={"mt-8"}>
               When I&apos;m not behind a computer, you can find me outdoors
               climbing, skiing, backpacking, and diving (depending on the
               season), or indoors playing board games.
