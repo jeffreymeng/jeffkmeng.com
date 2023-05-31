@@ -5,6 +5,8 @@ import { EnvelopeIcon } from "@heroicons/react/20/solid";
 import projects from "../data/projects";
 import socials from "@/data/socials";
 import ProjectButton from "@/components/ProjectButton";
+import ReactGA from "react-ga4";
+ReactGA.initialize("G-SGD74WQ9M0");
 
 export default function Home() {
   const [gradient, setGradient] = useState(true);
@@ -61,8 +63,6 @@ export default function Home() {
             I&apos;m a software engineer interested in{" "}
             <i>Programming Languages</i>, <i>Systems</i>, and <i>the Web</i>.
           </p>
-          {/*  TODO: Increase padding for entire page, check mobile responsiveness
-            (disable cursor on mobile), light mode?. Think about typography more*/}
         </div>
         <div className="mt-8 sm:mt-16 max-w-3xl">
           <div className="text-base leading-7 text-gray-300">

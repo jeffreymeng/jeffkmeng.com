@@ -10,7 +10,7 @@ export default function ProjectButton({
   return (
     <a
       href={link}
-      className="group relative py-2 sm:p-3 sm:hover:bg-gray-100/10 sm:hover:shadow-lg transition-all rounded-lg"
+      className="group relative py-2 sm:p-4 sm:pb-6 sm:hover:bg-gray-100/10 sm:hover:shadow-lg transition-all rounded-lg"
     >
       <div>
         <div className="flex justify-between">
