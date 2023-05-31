@@ -2,7 +2,7 @@
 import cx from "classnames";
 import { useEffect, useState } from "react";
 import { EnvelopeIcon } from "@heroicons/react/20/solid";
-import projects from "../data/projects";
+import projects from "@/data/projects";
 import socials from "@/data/socials";
 import ProjectButton from "@/components/ProjectButton";
 import ReactGA from "react-ga4";
@@ -83,7 +83,7 @@ export default function Home() {
             </p>
             <p className={"mt-8"}>
               When I&apos;m not behind a computer, you can find me outdoors
-              climbing, skiing, backpacking, and diving (depending on the
+              climbing, skiing, backpacking, or diving (depending on the
               season), or indoors playing board games.
             </p>
           </div>
