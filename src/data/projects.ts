@@ -56,7 +56,7 @@ const projects: Project[] = [
   {
     name: "Minecraft Deathswap",
     description:
-      "A scoreboard based minecraft spigot plugin to play the death swap game mode.",
+      "A scoreboard-based minecraft spigot plugin to play the death swap game mode.",
     year: 2020,
     link: "https://github.com/jeffreymeng/mcmultiplayerdeathswap",
     tech: ["Java", "Bukkit"],
@@ -64,14 +64,14 @@ const projects: Project[] = [
   {
     name: "MV Model UN Website",
     description:
-      "A website for my high school's Model UN club, complete with a custom registration flow, PDF waivier autofill, and extensive admin controls.",
+      "A website for my high school's Model UN club, complete with a custom registration flow, PDF waiver autofill, and extensive admin controls.",
     year: 2020,
     link: "https://montavistamun.com/",
     tech: ["React", "Firebase", "TypeScript"],
   },
   {
     name: "Techedit",
-    description: "A simple, lightweight collaborative text-editor. ",
+    description: "A simple, lightweight collaborative text editor. ",
     year: 2019,
     link: "https://techedit.io",
     tech: ["Firebase", "jQuery", "Bootstrap"],
