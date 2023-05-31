@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { EnvelopeIcon } from "@heroicons/react/20/solid";
 import projects from "../data/projects";
 import socials from "@/data/socials";
-import ProjectButton from "@/components/ProjectButton";
+import Project from "@/components/Project";
 import ReactGA from "react-ga4";
 ReactGA.initialize("G-SGD74WQ9M0");
 
@@ -67,6 +67,7 @@ export default function Home() {
         <div className="mt-8 sm:mt-16 max-w-3xl">
           <div className="text-base leading-7 text-gray-300">
             <p>
+              {/* Note: can change to "I study @ UC Irvine,**where I** research PL" to move stuff around*/}
               I study Computer Science at UC Irvine, and I&apos;m an intern at
               IBM for the summer. At UC Irvine, I also research Programming
               Languages & Static Analysis with{" "}
@@ -96,9 +97,9 @@ export default function Home() {
             Here&apos;s a few of the things I&apos;ve been working on recently:
           </p>
           <div className="mx-auto mt-6 sm:mt-10 max-w-7xl sm:mt-20 md:mt-12">
-            <div className="mx-auto grid max-w-2xl grid-cols-1 sm:gap-x-4 gap-y-6 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            <div className="grid max-w-2xl grid-cols-1 sm:gap-x-4 gap-y-6 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
               {projects.map((project) => (
-                <ProjectButton key={project.name} {...project} />
+                <Project key={project.name} {...project} />
               ))}
             </div>
           </div>
@@ -109,7 +110,7 @@ export default function Home() {
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-400 hover:text-gray-200"
+              className="text-gray-400 hover:text-gray-200 sm:transition-colors"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />

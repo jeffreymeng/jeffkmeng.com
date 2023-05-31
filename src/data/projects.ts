@@ -18,14 +18,14 @@ const projects: Project[] = [
   {
     name: "Personal Website",
     year: 2023,
-    description: "The source code for this website",
+    description: "The source code for this website!",
     link: "https://github.com/jeffreymeng/jeffkmeng.com",
     tech: ["React", "Next", "Tailwind"],
   },
   {
     name: "Slack Exporter",
     year: 2022,
-    description: "A backup tool for slack channels",
+    description: "A simple backup tool for exporting slack channels",
     link: "https://github.com/jeffreymeng/slack-exporter",
     tech: ["TypeScript", "Slack API"],
   },
