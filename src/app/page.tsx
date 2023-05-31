@@ -9,7 +9,7 @@ import ReactGA from "react-ga4";
 ReactGA.initialize("G-SGD74WQ9M0");
 
 export default function Home() {
-  const [gradient, setGradient] = useState(true);
+  const [darkMode, setDarkMode] = useState(true);
   useEffect(() => {
     const elem = document.querySelector(".gradient-track");
     if (!elem) return;
@@ -31,8 +31,8 @@ export default function Home() {
   }, []);
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
-      if (event.key === "g") {
-        setGradient((o) => !o);
+      if (event.key === "d") {
+        setDarkMode((o) => !o);
       }
     };
     document.addEventListener("keypress", handler);
@@ -43,10 +43,8 @@ export default function Home() {
   return (
     <main
       className={cx(
-        "relative isolate py-12 sm:py-32 min-h-screen",
-        gradient
-          ? "bg-gradient-to-br to-slate-900 from-sky-900"
-          : "bg-slate-900"
+        "relative isolate py-12 sm:py-32 min-h-screen bg-gray-50",
+        darkMode && "dark bg-gradient-to-br to-slate-900 from-sky-900"
       )}
     >
       <div
@@ -56,16 +54,16 @@ export default function Home() {
       ></div>
       <div className="relative mx-auto max-w-7xl px-6 md:px-16 lg:px-36 z-10">
         <div className="max-w-3xl">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
             Jeffrey Meng
           </h2>
-          <p className="mt-6 text-lg leading-5 text-white">
+          <p className="mt-6 text-lg leading-5 text-gray-900 dark:text-white">
             I&apos;m a software engineer thinking about{" "}
             <i>Programming Languages</i>, <i>Systems</i>, and <i>the Web</i>.
           </p>
         </div>
         <div className="mt-8 sm:mt-16 max-w-3xl">
-          <div className="text-base leading-7 text-gray-300">
+          <div className="text-base leading-7 text-gray-700 dark:text-gray-300">
             <p>
               {/* Note: can change to "I study @ UC Irvine,**where I** research PL" to move stuff around*/}
               I study Computer Science at UC Irvine, and I&apos;m an intern at
@@ -73,7 +71,7 @@ export default function Home() {
               Languages & Static Analysis with{" "}
               <a
                 className={
-                  "inline hover:text-cyan-500 transition-all underline"
+                  "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
                 }
                 href={"https://michaelfranz.com"}
               >
@@ -90,10 +88,10 @@ export default function Home() {
           </div>
         </div>
         <div className={"mt-12"}>
-          <h3 className="text-2xl font-bold tracking-tight text-white sm:text-4xl">
+          <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Projects
           </h3>
-          <p className="mt-6 text-lg leading-5 text-gray-300">
+          <p className="mt-6 text-lg leading-5 text-gray-700 dark:text-gray-300">
             Here&apos;s a few of the things I&apos;ve been working on recently:
           </p>
           <div className="mx-auto mt-6 sm:mt-10 max-w-7xl sm:mt-20 md:mt-12">
@@ -110,14 +108,14 @@ export default function Home() {
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-400 hover:text-gray-200 sm:transition-colors"
+              className="dark:text-gray-400 text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 sm:transition-colors"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
         </div>
-        <p className="mt-10 text-md leading-5 text-gray-400">
+        <p className="mt-10 text-md leading-5 text-gray-600 dark:text-gray-400">
           Copyright &copy; 2023 Jeffrey Meng
         </p>
       </div>
