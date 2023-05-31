@@ -20,7 +20,7 @@ const projects: Project[] = [
     year: 2023,
     description: "The source code for this website!",
     link: "https://github.com/jeffreymeng/jeffkmeng.com",
-    tech: ["React", "Next", "Tailwind"],
+    tech: ["Next", "React", "Tailwind"],
   },
   {
     name: "Slack Exporter",
@@ -35,7 +35,7 @@ const projects: Project[] = [
       "A discord bot to allow users to quickly repost images, memes, etc.",
     year: 2021,
     link: "https://github.com/jeffreymeng/discordphotosbot",
-    tech: ["Firebase", "Express", "TypeScript"],
+    tech: ["Express", "Firebase", "TypeScript"],
   },
   {
     name: "Quicksheets",
@@ -48,7 +48,7 @@ const projects: Project[] = [
   {
     name: "Unread XKCD",
     description:
-      "A chrome extension that adds a button to XKCD.com that allows you to view a random unseen comic.",
+      "A chrome extension that adds a button to XKCD.com so you'll never see the same random comic twice.",
     year: 2021,
     link: "https://chrome.google.com/webstore/detail/unread-xkcd/kdopolncblaedldhpafjogpjhmelmdep",
     tech: ["TypeScript"],
