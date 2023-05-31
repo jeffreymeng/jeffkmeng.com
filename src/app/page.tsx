@@ -85,13 +85,7 @@ export default function Home() {
               When I&apos;m not behind a computer, you can find me outdoors
               climbing, skiing, backpacking, and diving (depending on the
               season), or indoors playing board games.
-              {/*<span className={"text-red-500"}>*/}
-              {/*  TODO: Add an absolute element with overflow hidden to fix the*/}
-              {/*  spotlight edge and also spotlight shift when scrolling*/}
-              {/*</span>*/}
             </p>
-
-            {/*TODO: fix scrolling when cursor thing is at the edge of the screen (maybe the fix is to have an absolute backdrop) */}
           </div>
         </div>
         <div className={"mt-12"}>
@@ -102,7 +96,7 @@ export default function Home() {
             Here&apos;s a few of the things I&apos;ve been working on recently:
           </p>
           <div className="mx-auto mt-6 sm:mt-10 max-w-7xl sm:mt-20 md:mt-12">
-            <div className="mx-auto grid max-w-2xl grid-cols-1 sm:gap-x-6 gap-y-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            <div className="mx-auto grid max-w-2xl grid-cols-1 sm:gap-x-4 gap-y-6 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
               {projects.map((project) => (
                 <ProjectButton key={project.name} {...project} />
               ))}
