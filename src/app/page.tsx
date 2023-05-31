@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const elem = document.querySelector(".gradient-track");
     if (!elem) return;
-    const handler = (e: any) => {
+    const handler = (e: MouseEvent) => {
       let rect = elem.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -28,8 +28,8 @@ export default function Home() {
     };
   }, []);
   useEffect(() => {
-    const handler = (e) => {
-      if (String.fromCharCode(e.which) == "g") {
+    const handler = (event: KeyboardEvent) => {
+      if (event.key === "g") {
         setGradient((o) => !o);
       }
     };
@@ -99,7 +99,7 @@ export default function Home() {
             Projects
           </h3>
           <p className="mt-6 text-lg leading-5 text-gray-300">
-            Here's a few of the things I&apos;ve been working on recently:
+            Here&apos;s a few of the things I&apos;ve been working on recently:
           </p>
           <div className="mx-auto mt-6 sm:mt-10 max-w-7xl sm:mt-20 md:mt-12">
             <div className="mx-auto grid max-w-2xl grid-cols-1 sm:gap-x-6 gap-y-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">

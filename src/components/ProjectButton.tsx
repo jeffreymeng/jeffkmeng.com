@@ -27,7 +27,10 @@ export default function ProjectButton({
       </div>
       <div className={"flex text-xs gap-x-2 mt-2"}>
         {(tech || []).map((item) => (
-          <span className="relative z-10 rounded-full bg-gray-500/50 px-2 py-1 font-medium text-gray-300 sm:group-hover:text-gray-100 sm:group-hover:bg-gray-500 transition-all">
+          <span
+            key={item}
+            className="relative z-10 rounded-full bg-gray-500/50 px-2 py-1 font-medium text-gray-300 sm:group-hover:text-gray-100 sm:group-hover:bg-gray-500 transition-all"
+          >
             {item}
           </span>
         ))}
