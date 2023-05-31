@@ -60,7 +60,7 @@ export default function Home() {
             Jeffrey Meng
           </h2>
           <p className="mt-6 text-lg leading-5 text-white">
-            I&apos;m a software engineer interested in{" "}
+            I&apos;m a software engineer focusing on{" "}
             <i>Programming Languages</i>, <i>Systems</i>, and <i>the Web</i>.
           </p>
         </div>
