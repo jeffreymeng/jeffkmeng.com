@@ -107,18 +107,7 @@ export default function Home() {
           <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Contact
           </h3>
-          <p className={"text-gray-500 dark:text-gray-400 mt-6"}>
-            If you&apos;d like, you can{" "}
-            <a
-              className={
-                "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
-              }
-              href={"/Jeffrey%20Meng.asc"}
-            >
-              download my PGP key
-            </a>
-            .
-          </p>
+
           <div className={"mt-6"}>
             {socials.map((item) => (
               <a
@@ -131,6 +120,18 @@ export default function Home() {
                 {item.text}
               </a>
             ))}
+            <p className={"text-gray-500 dark:text-gray-400 mt-8"}>
+              If you&apos;d like, you can also{" "}
+              <a
+                className={
+                  "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
+                }
+                href={"/Jeffrey%20Meng.asc"}
+              >
+                download my PGP key
+              </a>
+              .
+            </p>
           </div>
         </div>
         <p className="mt-16 text-md leading-5 text-gray-600 dark:text-gray-400">
