@@ -95,7 +95,7 @@ export default function Home() {
             Here&apos;s a few of the things I&apos;ve been working on recently:
           </p>
           <div className="mx-auto mt-6 sm:mt-10 max-w-7xl sm:mt-20 md:mt-12">
-            <div className="grid max-w-2xl grid-cols-1 sm:gap-x-4 gap-y-6 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            <div className="grid max-w-2xl grid-cols-1 sm:gap-x-4 gap-y-6 text-base leading-7 text-gray-300 sm:grid-cols-2 sm:-mx-4 lg:max-w-none lg:grid-cols-3">
               {projects.map((project) => (
                 <Project key={project.name} {...project} />
               ))}
@@ -103,19 +103,37 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 flex space-x-8">
-          {socials.map((item) => (
+        <div className="mt-12 sm:mt-8">
+          <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            Contact
+          </h3>
+          <p className={"text-gray-500 dark:text-gray-400 mt-6"}>
+            If you&apos;d like, you can{" "}
             <a
-              key={item.name}
-              href={item.href}
-              className="dark:text-gray-400 text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 sm:transition-colors"
+              className={
+                "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
+              }
+              href={"/Jeffrey%20Meng.asc"}
             >
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
+              download my PGP key
             </a>
-          ))}
+            .
+          </p>
+          <div className={"mt-6"}>
+            {socials.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="block mt-3 dark:text-gray-400 text-gray-500 sm:hover:text-gray-700 dark:sm:hover:text-gray-200 sm:transition-colors text-md"
+              >
+                <span className="sr-only">{item.name}</span>
+                <item.icon className="h-6 w-6 inline mr-2" aria-hidden="true" />
+                {item.text}
+              </a>
+            ))}
+          </div>
         </div>
-        <p className="mt-10 text-md leading-5 text-gray-600 dark:text-gray-400">
+        <p className="mt-16 text-md leading-5 text-gray-600 dark:text-gray-400">
           Copyright &copy; 2023 Jeffrey Meng
         </p>
       </div>
