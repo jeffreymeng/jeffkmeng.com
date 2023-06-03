@@ -36,7 +36,7 @@ export default function Project({
           {tech?.map((item) => (
             <span
               key={item}
-              className="relative z-10 rounded-full bg-gray-200 sm:group-hover:bg-gray-300/75 transition-none dark:bg-gray-500/50 px-2 py-1 font-medium text-gray-700 dark:text-gray-300 sm:group-hover:text-gray-900 dark:sm:group-hover:text-gray-100 dark:sm:group-hover:bg-gray-500 transition-all"
+              className="relative z-10 rounded-full bg-gray-200 sm:group-hover:bg-gray-300/75 dark:bg-gray-500/50 px-2 py-1 font-medium text-gray-700 dark:text-gray-300 sm:group-hover:text-gray-900 dark:sm:group-hover:text-gray-100 dark:sm:group-hover:bg-gray-500 transition-all"
             >
               {item}
             </span>
