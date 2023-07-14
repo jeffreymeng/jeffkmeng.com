@@ -65,8 +65,8 @@ export default function Home() {
         <div className="mt-8 sm:mt-16 max-w-3xl">
           <div className="text-base leading-7 text-gray-700 dark:text-gray-300">
             <p>
-              {/* Note: can change to "I study @ UC Irvine,**where I** research PL" to move stuff around*/}
-              I'm currently interning at IBM for the summer, and during the
+              {/* Note: can change to "I study @ UC Irvine,**where I** research PL. I've previously interned at IBM in summer 2023" to move stuff around*/}
+              I&apos;m currently interning at IBM for the summer, and during the
               school year I study Computer Science at UC Irvine. At UC Irvine, I
               also research Programming Languages & Static Analysis with{" "}
               <a
