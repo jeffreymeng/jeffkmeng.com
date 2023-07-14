@@ -66,9 +66,9 @@ export default function Home() {
           <div className="text-base leading-7 text-gray-700 dark:text-gray-300">
             <p>
               {/* Note: can change to "I study @ UC Irvine,**where I** research PL" to move stuff around*/}
-              I study Computer Science at UC Irvine, and I&apos;m an intern at
-              IBM for the summer. At UC Irvine, I also research Programming
-              Languages & Static Analysis with{" "}
+              I'm currently interning at IBM for the summer, and during the
+              school year I study Computer Science at UC Irvine. At UC Irvine, I
+              also research Programming Languages & Static Analysis with{" "}
               <a
                 className={
                   "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
