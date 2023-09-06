@@ -141,13 +141,13 @@ export default function Main() {
                     <h3 className={"mt-4 text-lg font-bold"}>Format</h3>
                     <p className={"mt-2"}>
                       Quizzer expects a zip file with a questions.json JSON file
-                      as well as some optional images. If you don't wish to have
-                      any images, you can also just upload the questions.json
-                      file. The questions and answers in questions.json can
-                      contain HTML, which will be sanitized before it is
-                      displayed. Notably, image tags are stripped out of the
-                      HTML, so you can keep invalid images and provide them with
-                      the image field instead.{" "}
+                      as well as some optional images. If you don&apos;t wish to
+                      have any images, you can also just upload the
+                      questions.json file. The questions and answers in
+                      questions.json can contain HTML, which will be sanitized
+                      before it is displayed. Notably, image tags are stripped
+                      out of the HTML, so you can keep invalid images and
+                      provide them with the image field instead.{" "}
                     </p>
                     <Table
                       header={["Key", "Type", "Description"]}
