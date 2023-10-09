@@ -78,7 +78,7 @@ export default function Home() {
               </a>
               . My passion is building applications and systems that increase
               efficiency and contribute to well-designed experiences. During my
-              summers, I enjoy interning at various amazing companies: in 2024,
+              summers, I enjoy interning at various cool companies: in 2024,
               I'll be at Databricks, and I was previously at IBM working on{" "}
               <a
                 className={
