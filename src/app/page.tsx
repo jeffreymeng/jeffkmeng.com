@@ -66,7 +66,7 @@ export default function Home() {
           <div className="text-base leading-7 text-gray-700 dark:text-gray-300">
             <p>
               {/* Note: can change to "I study @ UC Irvine,**where I** research PL. I've previously interned at IBM in summer 2023" to move stuff around*/}
-              I'm an undergraduate studying Computer Science at UC Irvine, where
+              I&apos;m an undergraduate studying Computer Science at UC Irvine, where
               I also work on compilers-related research with{" "}
               <a
                 className={
@@ -79,7 +79,7 @@ export default function Home() {
               . My passion is building applications and systems that increase
               efficiency and contribute to well-designed experiences. During my
               summers, I enjoy interning at various cool companies: in 2024,
-              I'll be at Databricks, and I was previously at IBM working on{" "}
+              I&apos;ll be at Databricks, and I was previously at IBM working on{" "}
               <a
                 className={
                   "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
