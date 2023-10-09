@@ -66,9 +66,8 @@ export default function Home() {
           <div className="text-base leading-7 text-gray-700 dark:text-gray-300">
             <p>
               {/* Note: can change to "I study @ UC Irvine,**where I** research PL. I've previously interned at IBM in summer 2023" to move stuff around*/}
-              I&apos;m currently interning at IBM for the summer, and during the
-              school year I study Computer Science at UC Irvine. At UC Irvine, I
-              also research Programming Languages & Static Analysis with{" "}
+              I'm an undergraduate studying Computer Science at UC Irvine, where
+              I also work on compilers-related research with{" "}
               <a
                 className={
                   "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
@@ -78,7 +77,18 @@ export default function Home() {
                 Prof. Michael Franz
               </a>
               . My passion is building applications and systems that increase
-              efficiency and contribute to well-designed experiences.
+              efficiency and contribute to well-designed experiences. During my
+              summers, I enjoy interning at various amazing companies: in 2024,
+              I'll be at Databricks, and I was previously at IBM working on{" "}
+              <a
+                className={
+                  "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
+                }
+                href={"https://www.ibm.com/products/instana"}
+              >
+                Instana
+              </a>{" "}
+              in 2023.
             </p>
             <p className={"mt-8"}>
               When I&apos;m not behind a computer, you can find me outdoors
