@@ -10,6 +10,7 @@ type Converter = {
   parse: (x: string) => number;
   display: (x: number) => string;
 };
+const HEXDIGITS = new Set("0123456789ABCDEFabcdef".split(""));
 export default function NumbersPage() {
   const [num, setNum] = useState<number | null>(null); // decimal representation of the current number
   const [value, setValue] = useState<string>(""); // holds "invalid state" for the active input
@@ -22,13 +23,7 @@ export default function NumbersPage() {
   };
   const converters: Converter[] = [
     {
-      title: "Decimal",
-      isInvalid: (x: string) => rangeBasedInvalid(parseInt(x, 10)),
-      parse: (x: string) => parseInt(x, 10),
-      display: (x: number) => x + "",
-    },
-    {
-      title: "Binary (32-bit two's compliment)",
+      title: "Binary (interpreted as 32-bit two's compliment)",
       isInvalid: (x: string) => {
         if (x.length > 32) {
           return "Length is longer than 32 bits!";
@@ -42,16 +37,57 @@ export default function NumbersPage() {
       display: (x: number) => (x >>> 0).toString(2).padStart(32, "0"),
     },
     {
+      title: "Decimal",
+      isInvalid: (x: string) => rangeBasedInvalid(parseInt(x, 10)),
+      parse: (x: string) => parseInt(x, 10),
+      display: (x: number) => x + "",
+    },
+    {
       title: "Hex",
-      isInvalid: (x: string) => rangeBasedInvalid(parseInt(x, 16)),
+      isInvalid: (x: string) => {
+        if (x.length > 8) {
+          return "Length is longer than 32 bits!";
+        } else if (x.split("").some((c) => !HEXDIGITS.has(c))) {
+          return "Contains unrecognized digits!";
+        }
+        return false;
+      },
       parse: (x: string) => parseInt(x, 16),
       display: (x: number) => (x >>> 0).toString(16).toUpperCase(),
     },
-    // {
-    //   title: "Ascii",
-    //   parse: (x: string) => parseInt(x, 2),
-    //   display: (x: number) => (x >>> 0).toString(2),
-    // }
+    {
+      title: "Ascii Characters (Big-endian, if valid)",
+      isInvalid: (x: string) => {
+        if (x.length > 4) {
+          return "Length is longer than 4 characters (32 bits)!";
+        } else if (Array.from(x).some((c) => c.charCodeAt(0) >= 256)) {
+          return "Contains unrecognized digits!";
+        }
+        return false;
+      },
+      parse: (x: string) => {
+        let num = 0;
+        for (const c of x) {
+          num = num * 256 + c.charCodeAt(0);
+        }
+        return num;
+      },
+      display: (x: number) => {
+        const digits = [];
+        while (x > 0) {
+          const d = x & 0x000000ff;
+          digits.unshift(String.fromCharCode(d));
+          // if (32 <= d && d <= 126) {
+          //   digits.unshift(String.fromCharCode(d));
+          // } else {
+          //   digits.unshift("�");
+          // }
+
+          x >>>= 8;
+        }
+        return digits.join("");
+      },
+    },
   ];
   const defaultIsInvalid = (s: string) => false;
   return (
