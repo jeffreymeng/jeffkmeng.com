@@ -8,6 +8,14 @@ type Project = {
 
 const projects: Project[] = [
   {
+    name: "Number Representation Converter",
+    year: 2023,
+    description:
+      "Simple live as-you-type converter between different representations of 32-bit data.",
+    link: "/tools/number-representations",
+    tech: ["TypeScript"],
+  },
+  {
     name: "Jump",
     year: 2023,
     description: "A toy programming language & compiler.",

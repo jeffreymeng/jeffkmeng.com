@@ -1,6 +1,6 @@
 "use client";
 import cx from "classnames";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import Page from "@/components/Page";
 
 type Converter = {
@@ -9,8 +9,10 @@ type Converter = {
 
   parse: (x: string) => number;
   display: (x: number) => string;
+  inputClassName?: string;
 };
-const HEXDIGITS = new Set("0123456789ABCDEFabcdef".split(""));
+const HEX_DIGITS = new Set("0123456789ABCDEFabcdef".split(""));
+
 export default function NumbersPage() {
   const [num, setNum] = useState<number | null>(null); // decimal representation of the current number
   const [value, setValue] = useState<string>(""); // holds "invalid state" for the active input
@@ -47,7 +49,7 @@ export default function NumbersPage() {
       isInvalid: (x: string) => {
         if (x.length > 8) {
           return "Length is longer than 32 bits!";
-        } else if (x.split("").some((c) => !HEXDIGITS.has(c))) {
+        } else if (x.split("").some((c) => !HEX_DIGITS.has(c))) {
           return "Contains unrecognized digits!";
         }
         return false;
@@ -93,7 +95,16 @@ export default function NumbersPage() {
   return (
     <Page title={"Number Representation Converters"} noFooter>
       {converters.map(
-        ({ title, parse, display, isInvalid = defaultIsInvalid }, i) => (
+        (
+          {
+            title,
+            parse,
+            display,
+            isInvalid = defaultIsInvalid,
+            inputClassName,
+          },
+          i
+        ) => (
           <div className="max-w-sm mt-6" key={title}>
             <label
               htmlFor={"converter" + i}
@@ -124,7 +135,9 @@ export default function NumbersPage() {
                     setNum(null);
                   }
                 }}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className={cx(
+                  "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 font-mono"
+                )}
               />
               {active == i && typeof isInvalid(value) == "string" && (
                 <p className={"text-red-800"}>{isInvalid(value)}</p>

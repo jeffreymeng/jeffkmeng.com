@@ -1,11 +1,12 @@
 "use client";
 import cx from "classnames";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EnvelopeIcon } from "@heroicons/react/20/solid";
 import projects from "@/data/projects";
 import socials from "@/data/socials";
 import Project from "@/components/Project";
 import ReactGA from "react-ga4";
+import Link from "next/link";
 ReactGA.initialize("G-SGD74WQ9M0");
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
       let rect = elem.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      console.log(e.clientX, e.clientY, rect.left, rect.top);
+      // console.log(e.clientX, e.clientY, rect.left, rect.top);
       // console.log(x, y);
       //@ts-ignore
       elem.style.setProperty("--x", x + "px");
@@ -66,8 +67,8 @@ export default function Home() {
           <div className="text-base leading-7 text-gray-700 dark:text-gray-300">
             <p>
               {/* Note: can change to "I study @ UC Irvine,**where I** research PL. I've previously interned at IBM in summer 2023" to move stuff around*/}
-              I&apos;m an undergraduate studying Computer Science at UC Irvine, where
-              I also work on compilers-related research with{" "}
+              I&apos;m an undergraduate studying Computer Science at UC Irvine,
+              where I also work on compilers-related research with{" "}
               <a
                 className={
                   "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
@@ -119,17 +120,25 @@ export default function Home() {
           </h3>
 
           <div className={"mt-6"}>
-            {socials.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block mt-3 dark:text-gray-400 text-gray-500 sm:hover:text-gray-700 dark:sm:hover:text-gray-200 sm:transition-colors text-md"
-              >
-                <span className="sr-only">{item.name}</span>
-                <item.icon className="h-6 w-6 inline mr-2" aria-hidden="true" />
-                {item.text}
-              </a>
-            ))}
+            {socials.map(({ name, href, text, icon: ItemIcon }) =>
+              React.createElement(
+                href.startsWith("/") ? Link : "a",
+                {
+                  key: name,
+                  href,
+                  className:
+                    "block mt-3 dark:text-gray-400 text-gray-500 sm:hover:text-gray-700 dark:sm:hover:text-gray-200 sm:transition-colors text-md",
+                },
+                <>
+                  <span className="sr-only">{name}</span>
+                  <ItemIcon
+                    className="h-6 w-6 inline mr-2"
+                    aria-hidden="true"
+                  />
+                  {text}
+                </>
+              )
+            )}
             <p className={"text-gray-500 dark:text-gray-400 mt-8"}>
               If you&apos;d like, you can also{" "}
               <a
