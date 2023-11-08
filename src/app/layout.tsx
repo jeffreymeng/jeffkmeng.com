@@ -1,7 +1,10 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import ReactGA from "react-ga4";
 
 const inter = Inter({ subsets: ["latin"] });
+ReactGA.initialize("G-SGD74WQ9M0");
 
 export const metadata = {
   metadataBase: new URL("https://jeffkmeng.com"),
@@ -31,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
+      <Analytics />
     </html>
   );
 }

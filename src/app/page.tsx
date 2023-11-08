@@ -5,9 +5,7 @@ import { EnvelopeIcon } from "@heroicons/react/20/solid";
 import projects from "@/data/projects";
 import socials from "@/data/socials";
 import Project from "@/components/Project";
-import ReactGA from "react-ga4";
 import Link from "next/link";
-ReactGA.initialize("G-SGD74WQ9M0");
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
@@ -66,7 +64,6 @@ export default function Home() {
         <div className="mt-8 sm:mt-16 max-w-3xl">
           <div className="text-base leading-7 text-gray-700 dark:text-gray-300">
             <p>
-              {/* Note: can change to "I study @ UC Irvine,**where I** research PL. I've previously interned at IBM in summer 2023" to move stuff around*/}
               I&apos;m an undergraduate studying Computer Science at UC Irvine,
               where I also work on compilers-related research with{" "}
               <a
