@@ -67,7 +67,7 @@ const projects: Project[] = [
       "A chrome extension that adds a button to XKCD.com so you'll never see the same random comic twice.",
     year: 2021,
     link: "https://chrome.google.com/webstore/detail/unread-xkcd/kdopolncblaedldhpafjogpjhmelmdep",
-    tech: ["TypeScript"],
+    tech: ["TypeScript", "Chrome APIs"],
   },
   {
     name: "Minecraft Deathswap",
