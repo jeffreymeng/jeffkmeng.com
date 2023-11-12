@@ -74,10 +74,11 @@ export default function Home() {
               >
                 Prof. Michael Franz
               </a>
-              . My passion is building applications and systems that increase
-              efficiency and contribute to well-designed experiences. During my
-              summers, I enjoy interning at various cool companies: in 2024,
-              I&apos;ll be at Databricks, and I was previously at IBM working on{" "}
+              . My passion is building well-designed applications and systems
+              that increase efficiency and create exceptional experiences.
+              During my summers, I enjoy interning at various cool companies: in
+              2024, I&apos;ll be at Databricks, and I was previously at IBM
+              working on{" "}
               <a
                 className={
                   "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
@@ -91,7 +92,18 @@ export default function Home() {
             <p className={"mt-8"}>
               When I&apos;m not behind a computer, you can find me outdoors
               climbing, skiing, backpacking, or diving (depending on the
-              season), or indoors playing board games.
+              season), or indoors playing board games. I&apos;m also pretty
+              active within UC Irvine&apos;s{" "}
+              <a
+                className={
+                  "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
+                }
+                href={"https://icssc.club"}
+              >
+                ICSSC
+              </a>
+              , where I serve as a co-chair of our Events Committee and work to
+              organize events for UCI&apos;s ICS student population.
             </p>
           </div>
         </div>
