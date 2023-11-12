@@ -8,6 +8,14 @@ type Project = {
 
 const projects: Project[] = [
   {
+    name: "Crumple Tree Visualizer",
+    year: 2023,
+    description:
+      "Animated visualizer for Crumple Trees, a level-balanced binary search tree data structure.",
+    link: "https://crumpleviz.jeffkmeng.com",
+    tech: ["TypeScript", "React", "GraphViz"],
+  },
+  {
     name: "Number Representation Converter",
     year: 2023,
     description:
