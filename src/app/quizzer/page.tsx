@@ -29,6 +29,7 @@ export default function Main() {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>();
   const [data, setData] = useState<QuestionData[] | null>();
+  const [shuffle, setShuffle] = useState(true);
   const [loadImage, setLoadImage] = useState<
     ((name: string) => Promise<string | null>) | null
   >(null);
@@ -84,7 +85,7 @@ export default function Main() {
   }, [file]);
 
   const shuffledData = useMemo(
-    () => (data ? seededShuffle(data, 1000) : data),
+    () => ((!shuffle || !data) ? data : seededShuffle(data, 1000)),
     [data]
   );
 
@@ -215,6 +216,12 @@ export default function Main() {
                   </label>
                   .
                 </p>
+                <div className="flex items-center mt-4">
+                  <input id={"shuffle-checkbox"} checked={shuffle} onChange={e => setShuffle(e.target.checked)} type="checkbox"
+                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <label htmlFor="shuffle-checkbox"
+                           className="ms-2 text-gray-900 dark:text-gray-300 cursor-pointer select-none">Shuffle Questions</label>
+                </div>
               </>
             )}
 
