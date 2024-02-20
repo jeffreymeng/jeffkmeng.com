@@ -6,6 +6,7 @@ import projects from "@/data/projects";
 import socials from "@/data/socials";
 import Project from "@/components/Project";
 import Link from "next/link";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
@@ -92,8 +93,8 @@ export default function Home() {
             <p className={"mt-8"}>
               When I&apos;m not behind a computer, you can find me outdoors
               climbing, skiing, backpacking, or diving (depending on the
-              season), or indoors playing board games. I&apos;m also pretty
-              active within UC Irvine&apos;s{" "}
+              season), or indoors playing board games. I&apos;m also part of UC
+              Irvine&apos;s{" "}
               <a
                 className={
                   "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
@@ -163,7 +164,7 @@ export default function Home() {
           </div>
         </div>
         <p className="mt-16 text-md leading-5 text-gray-600 dark:text-gray-400">
-          Copyright &copy; 2023 Jeffrey Meng
+          Copyright &copy; 2023-{new Date().getFullYear()} Jeffrey Meng
         </p>
       </div>
     </main>
