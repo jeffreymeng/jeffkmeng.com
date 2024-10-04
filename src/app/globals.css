@@ -37,3 +37,31 @@ main:hover {
 .answer code {
   @apply text-gray-800 bg-gray-200 rounded-sm px-1;
 }
+
+body {
+  /*overflow-y: scroll;*/
+  scroll-timeline: --squareTimeline y;
+  /* Firefox supports the older "vertical" syntax */
+  scroll-timeline: --squareTimeline vertical;
+  position: relative;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+
+  animation-name: verticalShift;
+  /*animation-duration: 1ms; !* Firefox requires this to apply the animation *!*/
+  animation-timeline: --squareTimeline;
+  position: absolute;
+}
+
+@keyframes verticalShift {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-1000px);
+  }
+}

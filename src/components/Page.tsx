@@ -28,7 +28,7 @@ export default function Page({
 
         {!noFooter && (
           <p className="mt-16 text-md leading-5 text-gray-600 dark:text-gray-400">
-            Copyright &copy; 2023 Jeffrey Meng
+            Copyright &copy; 2023-2024 Jeffrey Meng
           </p>
         )}
       </div>

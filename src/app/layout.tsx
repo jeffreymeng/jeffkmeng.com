@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import ReactGA from "react-ga4";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 const inter = Inter({ subsets: ["latin"] });
 ReactGA.initialize("G-SGD74WQ9M0");
