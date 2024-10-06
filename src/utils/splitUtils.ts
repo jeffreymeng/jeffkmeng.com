@@ -95,12 +95,18 @@ export function floorAndDistribute(amounts: number[], total?: number): Money[] {
 }
 
 export function getURLDollarParam(key: string) {
+  if (typeof window === "undefined") {
+    return null;
+  }
   const url = new URL(window.location.href);
   const val = url.searchParams.get(key);
   return safeParseDollars(val);
 }
 
 function safeParseDollars(amount: string | null) {
+  if (typeof window === "undefined") {
+    return null;
+  }
   try {
     if (amount === null) {
       return null;
