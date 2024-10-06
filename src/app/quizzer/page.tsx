@@ -6,12 +6,11 @@ import Table from "@/components/table";
 ReactGA.initialize("G-SGD74WQ9M0");
 import {
   BlobReader,
-  BlobWriter,
   Data64URIWriter,
   TextWriter,
   ZipReader,
 } from "@zip.js/zip.js";
-import sanitizeHtml from "sanitize-html";
+
 import Quizzer from "@/components/quizzer/Quizzer";
 import seededShuffle from "@/utils/seededShuffle";
 export type QuestionData = {
@@ -50,13 +49,13 @@ export default function Main() {
       const questions = entries.find(
         (f) =>
           !f.filename.startsWith("__") &&
-          f.filename.split("/").at(-1)!!.endsWith("questions.json")
+          f.filename.split("/").at(-1)!!.endsWith("questions.json"),
       );
       if (!questions) {
         clearState();
         setError(
           "Unable to locate a questions.json file in the given zip file. " +
-            "Please double check the file format and try again."
+            "Please double check the file format and try again.",
         );
         return;
       }
@@ -74,7 +73,7 @@ export default function Main() {
         const file = entries.find(
           (f) =>
             !f.filename.startsWith("__") &&
-            f.filename.split("/").at(-1)!!.endsWith(name)
+            f.filename.split("/").at(-1)!!.endsWith(name),
         );
         if (!file) return null;
         // @ts-ignore
@@ -86,7 +85,7 @@ export default function Main() {
 
   const shuffledData = useMemo(
     () => (!shuffle || !data ? data : seededShuffle(data, 1000)),
-    [data]
+    [data],
   );
 
   return (
@@ -94,7 +93,7 @@ export default function Main() {
       <div
         className={cx(
           "relative isolate min-h-screen flex flex-col mx-auto max-w-7xl px-6 md:px-16 lg:px-24",
-          data ? "py-6" : "py-12 sm:py-16"
+          data ? "py-6" : "py-12 sm:py-16",
         )}
       >
         {!data && (
@@ -209,7 +208,7 @@ export default function Main() {
                       onChange={(event) => {
                         clearState();
                         setFile(
-                          event.target.files ? event.target.files[0] : null
+                          event.target.files ? event.target.files[0] : null,
                         );
                       }}
                     />

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import cx from "classnames";
-import { formatDollars, parseDollars } from "@/utils/splitUtils";
+import { parseDollars } from "@/utils/splitUtils";
 
 export default function DollarInput({
   label,

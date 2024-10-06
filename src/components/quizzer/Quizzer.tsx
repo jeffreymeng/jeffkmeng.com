@@ -1,14 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-import sanitizeHtml from "sanitize-html";
 import { QuestionData } from "@/app/quizzer/page";
-import { Simulate } from "react-dom/test-utils";
-import load = Simulate.load;
-import cx from "classnames";
 import Question from "@/components/quizzer/Question";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 function useStickyState<T>(
   defaultValue: T,
-  key: string
+  key: string,
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [value, setValue] = React.useState<T>(() => {
     const stickyValue = window.localStorage.getItem(key);
@@ -19,6 +15,7 @@ function useStickyState<T>(
   }, [key, value]);
   return [value, setValue];
 }
+
 export default function Quizzer({
   setName,
   onExit,
@@ -32,7 +29,7 @@ export default function Quizzer({
 }) {
   const [questionNum, setQuestionNum] = useStickyState(
     0,
-    (setName || "unknown") + "-questionNum"
+    (setName || "unknown") + "-questionNum",
   );
   const [imageStatus, setImageStatus] = useState<
     "none" | "loading" | "error" | "done"
@@ -47,7 +44,7 @@ export default function Quizzer({
     () =>
       data[questionNum].question.toLowerCase().includes("select all") ||
       data[questionNum].answers.filter((q) => q.correct).length != 1,
-    [data, questionNum]
+    [data, questionNum],
   );
   const [results, setResults] = useStickyState<
     {
@@ -124,7 +121,7 @@ export default function Quizzer({
           setAnswerStatus("");
           if (canSelectMultiple) {
             setSelected((o) =>
-              o.includes(i) ? o.filter((x) => x !== i) : [...o, i]
+              o.includes(i) ? o.filter((x) => x !== i) : [...o, i],
             );
           } else {
             setSelected([i]);
@@ -195,7 +192,7 @@ export default function Quizzer({
       <p>
         Correct: [
         {Array.from(
-          new Set(results.filter((x) => x.correct).map((x) => x.question + 1))
+          new Set(results.filter((x) => x.correct).map((x) => x.question + 1)),
         )
           .sort((a, b) => a - b)
           .join(", ")}
@@ -204,7 +201,7 @@ export default function Quizzer({
       <p>
         Incorrect: [
         {Array.from(
-          new Set(results.filter((x) => !x.correct).map((x) => x.question + 1))
+          new Set(results.filter((x) => !x.correct).map((x) => x.question + 1)),
         )
           .sort((a, b) => a - b)
           .join(", ")}

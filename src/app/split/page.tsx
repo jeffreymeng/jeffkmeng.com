@@ -14,7 +14,6 @@ import {
   getURLDollarParam,
   getPeopleFromURL,
 } from "@/utils/splitUtils";
-import Link from "next/link";
 
 const TIMES = "×";
 
