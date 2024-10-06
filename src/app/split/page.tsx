@@ -1,135 +1,228 @@
 "use client";
 
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useEffect, useMemo } from "react";
 import Page from "@/components/Page";
-import StyledLink from "@/components/StyledLink";
-
-function Input({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}) {
-  // TODO: use flex
-  return (
-    <div className={"mt-5"}>
-      <label
-        htmlFor={`input-${label}`}
-        className="block text-sm font-medium leading-6 text-gray-900"
-      >
-        {label}
-      </label>
-      <div className="mt-2">
-        <input
-          type="number"
-          name={`input-${label}`}
-          value={value}
-          onChange={onChange}
-          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        />
-      </div>
-    </div>
-  );
-}
-
-function replaceAtIndex<T>(arr: T[], i: number, val: T): T[] {
-  const dup = arr.slice();
-  dup[i] = val;
-  return dup;
-}
-
-function isZero(x: null | number) {
-  return x === null || x === 0;
-}
-
-function parseMoney(x: string) {
-  const n = parseFloat(x);
-  if (isNaN(n)) {
-    return null;
-  }
-  return Math.round(n * 100);
-}
-
-function formatMoney(x: number | null) {
-  if (x === null) return "";
-  const dollars = Math.floor(x / 100);
-  const cents = ("" + (x % 100)).padEnd(2, "0");
-  return `${dollars}.${cents}`;
-}
+import cx from "classnames";
+import DollarInput from "@/components/split/DollarInput";
+import {
+  getEmptyPerson,
+  PersonSubtotal,
+  isEmpty,
+  replaceAtIndex,
+  formatDollars,
+  floorAndDistribute,
+  getURLDollarParam,
+  getPeopleFromURL,
+} from "@/utils/splitUtils";
+import Link from "next/link";
 
 const TIMES = "×";
 
 export default function SplitPage() {
-  const [total, setTotal] = React.useState<null | number>(null);
-  const [subtotal, setSubtotal] = React.useState<number | null>(null);
-  const [shared, setShared] = React.useState<number | null>(null);
-  const [people, setPeople] = React.useState<(number | null)[]>([null, null]);
-  console.log(people);
+  const [total, setTotal] = React.useState<null | number>(() =>
+    getURLDollarParam("total"),
+  );
+  const [subtotal, setSubtotal] = React.useState<number | null>(() =>
+    getURLDollarParam("subtotal"),
+  );
+  const [shared, setShared] = React.useState<number | null>(() =>
+    getURLDollarParam("shared"),
+  );
+  const [people, setPeople] = React.useState<PersonSubtotal[]>(() =>
+    getPeopleFromURL(),
+  );
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const urlContainsState = url.searchParams.has("total");
+
+    if (total !== null) {
+      url.searchParams.set("total", total + "");
+    } else {
+      url.searchParams.delete("total");
+    }
+    if (subtotal !== null) {
+      url.searchParams.set("subtotal", subtotal + "");
+    } else {
+      url.searchParams.delete("subtotal");
+    }
+    if (shared !== null) {
+      url.searchParams.set("shared", shared + "");
+    } else {
+      url.searchParams.delete("shared");
+    }
+    if (people.filter((p) => !isEmpty(p, 2)).length > 0) {
+      url.searchParams.set("people", btoa(JSON.stringify(people)));
+    } else {
+      url.searchParams.delete("people");
+    }
+
+    if (urlContainsState) {
+      window.history.replaceState({}, "", url);
+    } else {
+      window.history.pushState({}, "", url);
+    }
+  }, [total, subtotal, shared, people]);
+  const multiplier = !total || !subtotal ? null : total / subtotal;
+  const sharedSplitPerPerson = useMemo(
+    () =>
+      shared === null
+        ? null
+        : shared / people.filter((p, i) => !isEmpty(p, i)).length,
+    [shared, people],
+  );
+  const totals = useMemo(() => {
+    return floorAndDistribute(
+      people.map((person, index) => {
+        const personSharedSplit = isEmpty(person, index)
+          ? 0
+          : sharedSplitPerPerson || 0;
+        if (person.subtotal === null || multiplier === null) {
+          return 0;
+        }
+        return (person.subtotal + personSharedSplit) * multiplier;
+      }),
+    );
+  }, [people, sharedSplitPerPerson]);
+  const individualSubtotalSum = useMemo(() => {
+    return people.reduce((total: number | null, person, i) => {
+      const personSharedSplit = isEmpty(person, i)
+        ? 0
+        : sharedSplitPerPerson || 0;
+      return total === null || person.subtotal === null
+        ? total
+        : total + person.subtotal + personSharedSplit;
+    }, 0);
+  }, [people, subtotal, sharedSplitPerPerson]);
+  useEffect(() => {
+    if (
+      people.length >= 3 &&
+      isEmpty(people[people.length - 1], 2) &&
+      isEmpty(people[people.length - 2], 2)
+    ) {
+      setPeople(people.slice(0, -1));
+    } else if (!isEmpty(people[people.length - 1], 2)) {
+      setPeople([...people, getEmptyPerson()]);
+    }
+  }, [people, setPeople]);
   return (
-    <Page title={"Fast Check Splitter"}>
+    <Page
+      title={"Fast Check Splitter"}
+      footer={
+        <p className={"pt-3"}>
+          If you share your current URL, your totals will be shared too.{" "}
+          <a className={"link"} href={"/split"}>
+            Reset this page
+          </a>{" "}
+          if you don't want that.
+        </p>
+      }
+    >
       <p className="mt-6 text-lg leading-5 text-gray-900 dark:text-white">
         A simple utility for quickly splitting bills, optimized for efficient
         input on mobile.
       </p>
-      {/*TODO: store input and money (to handle invalid input, turn red), emit a onChange only on valid input.
-      Call component moneyinput.*/}
+
       <div className={"mt-5"}>
-        <Input
-          label={"Total (including tax and tip)"}
-          value={total}
-          onChange={(e) => setTotal(e.target.value)}
+        <DollarInput
+          label={"Total (after tax and tip):"}
+          type={"full-width"}
+          onChange={(v) => setTotal(v)}
+          initialValue={formatDollars(total)}
         />
-        <Input
-          label={"Subtotal"}
-          value={subtotal}
-          onChange={(e) => setTotal(e.target.value)}
+        <DollarInput
+          label={"Subtotal:"}
+          type={"full-width"}
+          onChange={(v) => setSubtotal(v)}
+          initialValue={formatDollars(subtotal)}
+          error={
+            total != null && subtotal != null && subtotal > total
+              ? "The subtotal should not be greater than the total"
+              : ""
+          }
         />
-        <Input
-          label={"Shared Items"}
-          value={shared}
-          onChange={(e) => setTotal(e.target.value)}
+        <DollarInput
+          label={"Total for shared items:"}
+          type={"full-width"}
+          placeholder={"0.00"}
+          initialValue={formatDollars(shared)}
+          onChange={(v) => setShared(v)}
         />
-        {people.map((personSubtotal, index) => (
-          <p className={"mt-3"} key={index}>
-            <b>Person {index + 1}</b>:{" "}
-            <input
-              type="number"
-              className="w-20 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              value={personSubtotal == null ? "" : formatMoney(personSubtotal)}
-              onChange={(e) => {
-                setPeople((o) => {
-                  const arr = replaceAtIndex(
-                    o,
-                    index,
-                    parseMoney(e.target.value)
-                  );
-                  if (
-                    arr.length >= 3 &&
-                    isZero(arr[arr.length - 1]) &&
-                    isZero(arr[arr.length - 2])
-                  ) {
-                    arr.pop();
-                  } else if (!isZero(arr[arr.length - 1])) {
-                    arr.push(null);
+        <hr className="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700" />
+        {people.map((person, index) => {
+          const personSharedSplit = isEmpty(person, index)
+            ? 0
+            : sharedSplitPerPerson || 0;
+          return (
+            <p className={"mt-3"} key={index}>
+              <input
+                name={`name-${index}`}
+                value={person.name}
+                onChange={(e) =>
+                  setPeople((o) =>
+                    replaceAtIndex(o, index, {
+                      ...person,
+                      name: e.target.value,
+                    }),
+                  )
+                }
+                placeholder={`Person ${index + 1}`}
+                className={cx(
+                  "w-28 font-bold inline rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset",
+                  "placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6",
+                  "ring-gray-300 focus:ring-indigo-600 text-gray-900",
+                )}
+              />
+              <b>{":  "}</b>
+              <span className={"whitespace-nowrap text-right"}>
+                {personSharedSplit > 0 && "("}
+                <DollarInput
+                  type={"inline"}
+                  initialValue={formatDollars(person.subtotal)}
+                  onChange={(v) =>
+                    setPeople((o) =>
+                      replaceAtIndex(o, index, {
+                        ...person,
+                        subtotal: v,
+                      }),
+                    )
                   }
-                  return arr;
-                });
-              }}
-            />{" "}
-            {TIMES} <span>1.2577</span> ={" "}
-            <span>
-              $
-              {personSubtotal === null
-                ? ""
-                : formatMoney(Math.round(personSubtotal * 1.2577))}
-            </span>
+                />{" "}
+                {personSharedSplit > 0
+                  ? "+ " + formatDollars(personSharedSplit) || "???"
+                  : ""}
+                {personSharedSplit > 0 && ")"} {TIMES}{" "}
+                <span>
+                  {multiplier === null
+                    ? "???"
+                    : Math.round(multiplier * 1000) / 1000}
+                </span>{" "}
+                ={" "}
+                <span>
+                  $
+                  {person.subtotal === null || multiplier == null
+                    ? ""
+                    : formatDollars(totals[index])}
+                </span>
+              </span>
+            </p>
+          );
+        })}
+      </div>
+      {individualSubtotalSum !== null &&
+        subtotal !== null &&
+        individualSubtotalSum !== subtotal &&
+        (individualSubtotalSum < subtotal ? (
+          <p className="pt-5 italic text-gray-600">
+            ${formatDollars(subtotal - individualSubtotalSum)} of the subtotal
+            is still unaccounted for.
+          </p>
+        ) : (
+          <p className="pt-5 italic text-gray-600">
+            The individual subtotals add up to{" "}
+            {formatDollars(individualSubtotalSum - subtotal)} more than the
+            entered subtotal.
           </p>
         ))}
-        {/*  TODO: make the cents add up for the calculation instead of rounding. */}
-      </div>
     </Page>
   );
 }
