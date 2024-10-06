@@ -1,4 +1,4 @@
-type Project = {
+type ProjectData = {
   name: string;
   year: number;
   description: string;
@@ -6,7 +6,7 @@ type Project = {
   link: string;
 };
 
-const projects: Project[] = [
+const projects: ProjectData[] = [
   {
     name: "Crumple Tree Visualizer",
     year: 2023,
@@ -101,5 +101,5 @@ if (
   throw new Error("Projects are not sorted properly.");
 }
 
-export type { Project };
+export type { ProjectData };
 export default projects;

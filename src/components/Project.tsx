@@ -1,4 +1,4 @@
-import { Project } from "@/data/projects";
+import { ProjectData } from "@/data/projects";
 
 export default function Project({
   link,
@@ -6,7 +6,7 @@ export default function Project({
   year,
   description,
   tech,
-}: Project) {
+}: ProjectData) {
   return (
     <a href={link}>
       <div

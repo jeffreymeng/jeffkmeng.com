@@ -1,12 +1,10 @@
 "use client";
 import cx from "classnames";
 import React, { useEffect, useState } from "react";
-import { EnvelopeIcon } from "@heroicons/react/20/solid";
 import projects from "@/data/projects";
 import socials from "@/data/socials";
 import Project from "@/components/Project";
 import Link from "next/link";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
