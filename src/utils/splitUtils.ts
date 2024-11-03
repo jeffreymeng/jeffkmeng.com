@@ -30,7 +30,7 @@ export function parseDollars(input: string): Money | null {
 export function formatDollars(x: Money | null) {
   if (x === null) return "";
   const dollars = Math.floor(x / 100);
-  const cents = ("" + (x % 100)).padStart(2, "0");
+  const cents = ("" + Math.floor(x % 100)).padStart(2, "0");
   return `${dollars}.${cents}`;
 }
 
