@@ -1,10 +1,29 @@
 "use client";
 import cx from "classnames";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import projects from "@/data/projects";
 import socials from "@/data/socials";
 import Project from "@/components/Project";
 import Link from "next/link";
+
+function ExternalLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      className={
+        "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
+      }
+      href={href}
+    >
+      {children}
+    </a>
+  );
+}
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
@@ -42,7 +61,7 @@ export default function Home() {
     <main
       className={cx(
         "relative isolate py-12 sm:py-32 min-h-screen bg-gray-50",
-        darkMode && "dark bg-gradient-to-br to-slate-900 from-sky-900",
+        darkMode && "dark bg-gradient-to-br to-slate-900 from-sky-900"
       )}
     >
       <div
@@ -56,8 +75,8 @@ export default function Home() {
             Jeffrey Meng
           </h2>
           <p className="mt-6 text-lg leading-5 text-gray-900 dark:text-white">
-            I&apos;m a software engineer thinking about{" "}
-            <i>Programming Languages</i>, <i>Systems</i>, and <i>the Web</i>.
+            I&apos;m a software engineer thinking about <i>Systems</i>,{" "}
+            <i>Programming Languages</i>, and <i>the Web</i>.
           </p>
         </div>
         <div className="mt-8 sm:mt-16 max-w-3xl">
@@ -65,44 +84,28 @@ export default function Home() {
             <p>
               I&apos;m an undergraduate studying Computer Science at UC Irvine,
               where I also work on compilers-related research with{" "}
-              <a
-                className={
-                  "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
-                }
-                href={"https://michaelfranz.com"}
-              >
+              <ExternalLink href={"https://michaelfranz.com"}>
                 Prof. Michael Franz
-              </a>
-              . My passion is building well-designed applications and systems
-              that increase efficiency and create exceptional experiences.
-              During my summers, I enjoy interning at various cool companies: in
-              2024, I&apos;ll be at Databricks, and I was previously at IBM
-              working on{" "}
-              <a
-                className={
-                  "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
-                }
-                href={"https://www.ibm.com/products/instana"}
-              >
-                Instana
-              </a>{" "}
-              in 2023.
+              </ExternalLink>
+              . I love deeply understanding systems, writing beautiful code, and
+              creating amazing software. During my time off from school,
+              I&apos;ve had the pleasure of interning at various cool companies:
+              I&apos;m currently at{" "}
+              <ExternalLink href={"https://modal.com"}>Modal</ExternalLink> this
+              fall, and in Summer 2025, I&apos;ll be at{" "}
+              <ExternalLink href={"https://janestreet.com"}>
+                Jane Street
+              </ExternalLink>
+              . In previous years, I&apos;ve interned at{" "}
+              <ExternalLink href={"https://www.databricks.com"}>
+                Databricks
+              </ExternalLink>{" "}
+              and <ExternalLink href={"https://www.ibm.com"}>IBM</ExternalLink>.
             </p>
             <p className={"mt-8"}>
               When I&apos;m not behind a computer, you can find me outdoors
               climbing, skiing, backpacking, or diving (depending on the
-              season), or indoors playing board games. I&apos;m also part of UC
-              Irvine&apos;s{" "}
-              <a
-                className={
-                  "inline hover:text-cyan-600 dark:hover:text-cyan-500 transition-all underline"
-                }
-                href={"https://icssc.club"}
-              >
-                ICSSC
-              </a>
-              , where I serve as a co-chair of our Events Committee and work to
-              organize events for UCI&apos;s ICS student population.
+              season), or indoors playing board games.
             </p>
           </div>
         </div>
@@ -144,8 +147,8 @@ export default function Home() {
                     aria-hidden="true"
                   />
                   {text}
-                </>,
-              ),
+                </>
+              )
             )}
             <p className={"text-gray-500 dark:text-gray-400 mt-8"}>
               If you&apos;d like, you can also{" "}
