@@ -8,6 +8,13 @@ type ProjectData = {
 
 const projects: ProjectData[] = [
   {
+    name: "Oh Hell Scorekeeper",
+    year: 2025,
+    description: "A scorekeeper for the card game oh hell.",
+    link: "https://ohhell.jeffkmeng.com",
+    tech: ["Svelte"],
+  },
+  {
     name: "Crumple Tree Visualizer",
     year: 2023,
     description:

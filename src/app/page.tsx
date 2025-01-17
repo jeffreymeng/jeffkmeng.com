@@ -61,7 +61,7 @@ export default function Home() {
     <main
       className={cx(
         "relative isolate py-12 sm:py-32 min-h-screen bg-gray-50",
-        darkMode && "dark bg-gradient-to-br to-slate-900 from-sky-900"
+        darkMode && "dark bg-gradient-to-br to-slate-900 from-sky-900",
       )}
     >
       <div
@@ -89,8 +89,8 @@ export default function Home() {
               </ExternalLink>
               . I love deeply understanding systems, writing beautiful code, and
               creating amazing software. During my time off from school,
-              I&apos;ve had the pleasure of interning at various cool companies:
-              I&apos;m currently at{" "}
+              I&apos;ve greatly enjoyed interning at various cool companies: I
+              was at{" "}
               <ExternalLink href={"https://modal.com"}>Modal</ExternalLink> this
               fall, and in Summer 2025, I&apos;ll be at{" "}
               <ExternalLink href={"https://janestreet.com"}>
@@ -147,8 +147,8 @@ export default function Home() {
                     aria-hidden="true"
                   />
                   {text}
-                </>
-              )
+                </>,
+              ),
             )}
             <p className={"text-gray-500 dark:text-gray-400 mt-8"}>
               If you&apos;d like, you can also{" "}
